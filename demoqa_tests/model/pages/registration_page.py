@@ -26,9 +26,7 @@ class RegistrationPage:
             browser.all('.custom-checkbox').element_by(have.exact_text(hob)).click()
 
         browser.element('#uploadPicture').set_value(
-            os.path.abspath(
-                os.path.join(os.path.dirname(tests.__file__), f'resources/{user.picture}')
-            )
+            os.path.abspath(f'resources/{user.picture}')
         )
         browser.element('#currentAddress').type(user.address)
         browser.element('#state').perform(command.js.scroll_into_view)
