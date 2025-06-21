@@ -40,7 +40,8 @@ class RegistrationPage:
             browser.element('#subjectsInput').type(value).press_enter()
 
     def choose_hobbies(self, value):
-        browser.all('#hobbiesWrapper label').element_by(have.exact_text(value)).click()
+        #browser.all('#hobbiesWrapper label').element_by(have.exact_text(value)).click()
+        browser.all('.custom-checkbox').element_by(have.exact_text(value)).click()
 
     def upload_picture(self, file):
         browser.element('#uploadPicture').set_value(
