@@ -6,20 +6,22 @@ from utils import attach
 from dotenv import load_dotenv
 import os
 
-@pytest.fixture(scope='function', autouse=True)
+@pytest.fixture(scope="session", autouse=True)
 def load_env():
     load_dotenv()
 
+@pytest.fixture(scope='function', autouse=True)
 def browser_settings():
     options = Options()
     selenoid_capabilities = {
         "browserName": "chrome",
-        "browserVersion": "127.0",
+        "browserVersion": "128.0",
         "selenoid:options": {
             "enableVNC": True,
             "enableVideo": True
         }
     }
+
     options.capabilities.update(selenoid_capabilities)
 
     selenoid_login = os.getenv("SELENOID_LOGIN")
