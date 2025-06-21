@@ -3,7 +3,7 @@ from selene import have
 import allure
 
 @allure.title('Успешная регистрация пользователя')
-def test_practice_form_filling(setup_browser):
+def test_practice_form_filling(browser_settings):
     with allure.step('Открыть форму регистрации'):
        registration_page = RegistrationPage()
        registration_page.open()
