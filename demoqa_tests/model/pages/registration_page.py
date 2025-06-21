@@ -18,7 +18,7 @@ class RegistrationPage:
         browser.element('.react-datepicker__month-select').type(user.month)
         browser.element('.react-datepicker__year-select').type(user.year)
         browser.element(
-            f'.react-datepicker__day--0{user.bd_day}:not(.react-datepicker__day--outside-month)'
+            f'.react-datepicker__day--0{user.day}:not(.react-datepicker__day--outside-month)'
         ).click()
         for sub in user.subjects.split(", "):
             browser.element('#subjectsInput').type(sub).press_enter()
