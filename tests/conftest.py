@@ -26,16 +26,17 @@ def browser_settings():
 
     selenoid_login = os.getenv("SELENOID_LOGIN")
     selenoid_pass = os.getenv("SELENOID_PASS")
-    selenoid_url = os.getenv("SELENOID_URL")
 
     driver = webdriver.Remote(
-        command_executor=f"https://{selenoid_login}:{selenoid_pass}@{selenoid_url}/wd/hub",
+        command_executor=f"https://{selenoid_login}:{selenoid_pass}@selenoid.autotests.cloud/wd/hub",
         options=options)
 
+    browser.config.driver = driver
     browser.config.window_width = 1366
     browser.config.window_height = 705
     browser.config.base_url = 'https://demoqa.com'
-    browser.config.driver = driver
+    browser.config.timeout = 20
+
 
     yield browser
 

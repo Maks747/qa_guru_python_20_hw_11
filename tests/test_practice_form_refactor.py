@@ -3,8 +3,8 @@ from demoqa_tests.data.users import User
 import allure
 from allure_commons.types import Severity
 
-@allure.tag('web')
-@allure.title('Корректная заполненная регистрационная форма')
+@allure.tag("web")
+@allure.title("Successful fill registration form")
 @allure.tag("web")
 @allure.severity(Severity.CRITICAL)
 @allure.label("owner", "Maksim")
@@ -12,8 +12,8 @@ from allure_commons.types import Severity
 @allure.link("'https://demoqa.com'", name="Testing")
 
 def test_practice_form_filling():
-    registration_page = RegistrationPage()
-    with allure.step("Открыть форму регистрации"):
+    with allure.step("Open registration page"):
+        registration_page = RegistrationPage()
         registration_page.open()
 
     test_user = User(
@@ -33,8 +33,8 @@ def test_practice_form_filling():
     city = 'Karnal'
     )
 
-    with allure.step("Заполнить форму и отправить"):
+    with allure.step("Fill form and send"):
         registration_page.registers_user(test_user)
-    with allure.step("Проверить зарегистрированного пользователя"):
+    with allure.step("Check registered user"):
         registration_page.should_registered_user_with(test_user)
 
