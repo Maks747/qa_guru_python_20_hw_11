@@ -27,7 +27,7 @@ class RegistrationPage:
 
         browser.element('#uploadPicture').set_value(
             os.path.abspath(
-                os.path.join(os.path.dirname(tests.__file__), f'resources/{user.photo}')
+                os.path.join(os.path.dirname(tests.__file__), f'resources/{user.picture}')
             )
         )
         browser.element('#currentAddress').type(user.address)
