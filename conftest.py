@@ -34,7 +34,7 @@ def browser_settings():
         options=options)
 
     browser.config.driver = driver
-    browser.config.timeout = 50
+    #browser.config.timeout = 50
     browser.config.driver.maximize_window()
     yield browser
 
