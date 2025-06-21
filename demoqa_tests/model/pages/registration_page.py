@@ -1,5 +1,6 @@
 from selene import browser, command, have
 import os
+import tests
 
 class RegistrationPage:
 
@@ -14,18 +15,23 @@ class RegistrationPage:
         browser.all('[name=gender]').element_by(have.value(user.gender)).element('..').click()
         browser.element('#userNumber').type(user.phone_number)
         browser.element('#dateOfBirthInput').click()
-        browser.element('.react-datepicker__month-select').type(user.month)
-        browser.element('.react-datepicker__year-select').type(user.year)
+        browser.element('.react-datepicker__month-select').type(user.bd_month)
+        browser.element('.react-datepicker__year-select').type(user.bd_year)
         browser.element(
-            f'.react-datepicker__day--0{user.day}:not(.react-datepicker__day--outside-month)'
+            f'.react-datepicker__day--0{user.bd_day}:not(.react-datepicker__day--outside-month)'
         ).click()
-        browser.element('#subjectsInput').type(user.subjects).press_enter()
+        for sub in user.subjects.split(", "):
+            browser.element('#subjectsInput').type(sub).press_enter()
         for hob in user.hobbies.split(", "):
             browser.all('.custom-checkbox').element_by(have.exact_text(hob)).click()
+
         browser.element('#uploadPicture').set_value(
-            os.path.abspath(f'resources/{user.picture}')
+            os.path.abspath(
+                os.path.join(os.path.dirname(tests.__file__), f'resources/{user.photo}')
             )
+        )
         browser.element('#currentAddress').type(user.address)
+        browser.element('#state').perform(command.js.scroll_into_view)
         browser.element('#state').click()
         browser.all('[id^=react-select][id*=option]').element_by(
             have.exact_text(user.state)
