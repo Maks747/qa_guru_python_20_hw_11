@@ -1,5 +1,6 @@
 import pytest
 from selene import browser
+from selene.support.shared import browser
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from utils import attach
@@ -18,7 +19,8 @@ def browser_settings():
         "browserVersion": "128.0",
         "selenoid:options": {
             "enableVNC": True,
-            "enableVideo": True
+            "enableVideo": True,
+            "enableLog": True
         }
     }
 
@@ -32,11 +34,6 @@ def browser_settings():
         options=options)
 
     browser.config.driver = driver
-    browser.config.window_width = 1366
-    browser.config.window_height = 705
-    browser.config.timeout = 30
-
-
     yield browser
 
     attach.add_screenshot(browser)
