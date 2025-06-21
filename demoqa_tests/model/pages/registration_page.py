@@ -20,7 +20,8 @@ class RegistrationPage:
             f'.react-datepicker__day--0{user.day}:not(.react-datepicker__day--outside-month)'
         ).click()
         browser.element('#subjectsInput').type(user.subjects).press_enter()
-        browser.all('#hobbiesWrapper label').element_by(have.exact_text(user.hobbies)).click()
+        for hob in user.hobbies.split(", "):
+            browser.all('.custom-checkbox').element_by(have.exact_text(hob)).click()
         browser.element('#uploadPicture').set_value(
             os.path.abspath(f'resources/{user.picture}')
             )
