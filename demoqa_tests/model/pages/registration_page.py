@@ -21,8 +21,8 @@ class RegistrationPage:
         ).click()
         for sub in user.subjects.split(", "):
             browser.element('#subjectsInput').type(sub).press_enter()
-        for hob in user.hobbies.split(", "):
-            browser.all('.custom-checkbox').element_by(have.exact_text(hob)).click()
+        for hobbies in user.hobbies.split(", "):
+            browser.all('.custom-checkbox').element_by(have.exact_text(hobbies)).click()
 
         browser.element('#uploadPicture').set_value(
             os.path.abspath(f'resources/{user.picture}')
