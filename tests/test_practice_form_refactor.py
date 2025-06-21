@@ -12,7 +12,7 @@ from allure_commons.types import Severity
 @allure.link("'https://demoqa.com'", name="Testing")
 
 def test_practice_form_filling():
-    with allure.step("Open registration page"):
+    with allure.step('Открыть форму регистрации'):
         registration_page = RegistrationPage()
         registration_page.open()
 
@@ -37,4 +37,3 @@ def test_practice_form_filling():
         registration_page.registers_user(test_user)
     with allure.step("Check registered user"):
         registration_page.should_registered_user_with(test_user)
-

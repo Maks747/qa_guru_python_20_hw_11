@@ -4,7 +4,8 @@ import os
 class RegistrationPage:
 
     def open(self):
-            browser.open('/automation-practice-form')
+        browser.open('https://demoqa.com/automation-practice-form')
+        return self
 
     def registers_user(self, user):
         browser.element('#firstName').type(user.first_name)

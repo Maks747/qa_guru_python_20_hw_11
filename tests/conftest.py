@@ -6,12 +6,10 @@ from utils import attach
 from dotenv import load_dotenv
 import os
 
-@pytest.fixture(scope="session", autouse=True)
+@pytest.fixture(scope='function', autouse=True)
 def load_env():
     load_dotenv()
 
-
-@pytest.fixture(scope='function', autouse=True)
 def browser_settings():
     options = Options()
     selenoid_capabilities = {
@@ -34,8 +32,7 @@ def browser_settings():
     browser.config.driver = driver
     browser.config.window_width = 1366
     browser.config.window_height = 705
-    browser.config.base_url = 'https://demoqa.com'
-    browser.config.timeout = 20
+    browser.config.timeout = 30
 
 
     yield browser
