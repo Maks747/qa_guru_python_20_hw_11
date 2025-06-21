@@ -26,7 +26,7 @@ def test_practice_form_filling():
     month = 'April',
     day = '20',
     subjects = 'Computer Science',
-    hobbies = 'Sports, Music',
+    hobbies = 'Reading, Music',
     picture = 'beautiful_tropical_beach_sea_ocean.png',
     address = 'Street, 15 house',
     state = 'Haryana',
