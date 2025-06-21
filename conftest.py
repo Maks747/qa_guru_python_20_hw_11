@@ -34,6 +34,7 @@ def browser_settings():
         options=options)
 
     browser.config.driver = driver
+    browser.config.timeout = 20
     yield browser
 
     attach.add_screenshot(browser)
